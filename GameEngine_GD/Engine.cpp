@@ -17,6 +17,8 @@ void Engine::Update()
 			window->close();
 		}
 	}
+
+	world->tick(10.0f);
 }
 
 Engine& Engine::GetInstance()
@@ -35,4 +37,10 @@ void Engine::Start(sf::RenderWindow* win)
 	{
 		Update();
 	}
+}
+
+void Engine::AddSystem(ECS::EntitySystem* newSys)
+{
+	world->registerSystem(newSys);
+	world->enableSystem(newSys);
 }

@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <SFML\Graphics.hpp>
+#include "ECS.h"
+#include "Components.h"
+#include "RenderingSystem.h"
 
 
 class Engine
@@ -21,8 +24,10 @@ private:
 public:
 	bool bIsQuit;
 	sf::RenderWindow* window;
+	ECS::World* world;
 
 	static Engine& GetInstance();
 	void Start(sf::RenderWindow* win);
+	void AddSystem(ECS::EntitySystem* newSys);
 };
 
